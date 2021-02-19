@@ -25,6 +25,27 @@ group node['hive2']['group'] do
   not_if { node['install']['external_users'].casecmp("true") == 0 }
 end
 
+group node['hive2']['group'] do
+  action :modify
+  members node['hadoop']['user']
+  append true
+  not_if { node['install']['external_users'].casecmp("true") == 0 }
+end
+
+group node['hive2']['group'] do
+  action :modify
+  members node['airflow']['user']
+  append true
+  not_if { node['install']['external_users'].casecmp("true") == 0 }
+end
+
+group node['hive2']['group'] do
+  action :modify
+  members node['sqoop']['user']
+  append true
+  not_if { node['install']['external_users'].casecmp("true") == 0 }
+end
+
 group node['kagent']['certs_group'] do
   action :create
   not_if "getent group #{node['kagent']['certs_group']}"
