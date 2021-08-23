@@ -47,7 +47,7 @@ end
 # Schematool will create a hive.log owned by root
 # HM/HS2 won't be able to write on that log
 file "#{node['hive2']['logs_dir']}/hive.log" do
-  mode '0755'
+  mode '0775'
   owner node['hive2']['user']
   group node['hops']['group']
 end
